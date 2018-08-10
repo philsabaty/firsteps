@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     if( isset($_POST['desc']) && $_POST['desc']!='' ){
         createEvent($db, $_POST['desc']);
     }
-    if( isset($_POST['delete']) && $_POST['delete']!='1' ){
+    elseif( isset($_POST['delete']) && $_POST['delete']!='1' ){
         deleteAllEvents($db);
     }
     header('Location: '.$_SERVER['REQUEST_URI']);

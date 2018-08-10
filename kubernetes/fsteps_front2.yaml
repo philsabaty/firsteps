@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: 1steps_front
+  name: fsteps-front2
   labels:
-    app: 1steps_front
+    app: fsteps-front
 spec:
   containers:
-    - image: philsabaty/1steps_front
-      name: 1steps_front
+    - image: philsabaty/fsteps-front
+      name: fsteps-front
       env:
       - name: MYSQL_HOST_1STEPS
         value: "172.17.0.1"

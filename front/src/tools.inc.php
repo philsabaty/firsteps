@@ -21,6 +21,6 @@ function createEvent($db, $desc){
 }
 
 function deleteAllEvents($db){
-    $sql = sprintf("DELETE FROM `events`; ");
+    $sql = "DELETE FROM `events` WHERE 1; ";
     $req = mysqli_query($db, $sql) or die('Error : <br>'.$sql.'<br>'.mysqli_error($db));
 }

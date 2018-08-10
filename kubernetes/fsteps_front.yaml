@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fsteps-front
+  labels:
+    app: fsteps-front
+spec:
+  containers:
+    - image: philsabaty/fsteps-front
+      name: fsteps-front
+      env:
+      - name: MYSQL_HOST_1STEPS
+        value: "172.17.0.1"
+      ports:
+      - containerPort: 80

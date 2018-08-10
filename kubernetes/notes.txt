@@ -1,0 +1,21 @@
+
+# install minikube et kubectl : https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882
+
+
+sudo minikube start --vm-driver=none \
+    --docker-env http_proxy=http://proxytest.services.local:3128 \
+    --docker-env https_proxy=http://proxytest.services.local:3128
+
+sudo minikube --vm-driver=none start --docker-env http_proxy=''  --docker-env https_proxy=''
+
+kubectl get nodes
+#NAME       STATUS    ROLES     AGE       VERSION
+#minikube   Ready     <none>    11m       v1.9.0
+
+kubectl create -f kubernetes/fsteps_db.yaml
+#pod/fsteps-db created
+
+kubectl get pods
+#NAME        READY     STATUS    RESTARTS   AGE
+#fsteps-db   1/1       Running   0          4m
+
