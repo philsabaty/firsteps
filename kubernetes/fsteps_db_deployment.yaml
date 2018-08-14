@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fsteps-db
+spec:
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: fsteps-db
+    spec:
+      containers:
+        - image: philsabaty/fsteps-db
+          imagePullPolicy: Always
+          name: fsteps-db
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "root"
+          - name: MYSQL_DATABASE
+            value: "first_steps"
+          ports:
+            - containerPort: 3306

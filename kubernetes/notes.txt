@@ -1,5 +1,10 @@
 
 # install minikube et kubectl : https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882
+...
+sudo apt-get install socat
+
+docker build  -t philsabaty/fsteps-front:v0.3
+docker push philsabaty/fsteps-front:v0.3
 
 
 sudo minikube start --vm-driver=none \
@@ -18,4 +23,12 @@ kubectl create -f kubernetes/fsteps_db.yaml
 kubectl get pods
 #NAME        READY     STATUS    RESTARTS   AGE
 #fsteps-db   1/1       Running   0          4m
+
+create -f kubernetes/service_fsteps_front_lb.yaml
+sudo minikube service fsteps-front-lb
+
+kubectl apply -f ./kubernetes/fsteps_front_deployment.yaml
+
+kubectl apply -f ./kubernetes/fsteps_front_deployment-v03.yaml --record
+kubectl rollout status deployment fsteps-front
 
